@@ -86,7 +86,7 @@ These packages include:
   
 - Create the droplet, let it launch, and then wait a minute or two while the docker image is pulled and the container launched.
 
-- Copy the IP address for the droplet you created, paste it into your browser as follows: `<IP ADDRESS>:8787`. This will take you to the RStudio Server login page. Use the username/password you set (or: rstudio/rstudio) to login and start analysing. If you entered your `git` credentials, perform a `git clone` to get a repo into the container. 
+- Copy the IP address for the droplet you created, and paste it into your browser as follows: `<IP ADDRESS>:8787`. This will take you to the RStudio Server login page. Use the username/password you set (or: rstudio/rstudio) to login and start analysing. If you entered your `git` credentials, perform a `git clone` to get a repo into the container. 
 
 #### Amazon EC2 instance
 
@@ -97,7 +97,7 @@ These packages include:
 - Once the instance is running, copy the _'Public DNS(IPv4)'_, open a terminal and _`SSH`_ into the instance using the copied address: 
 
   ```
-  $ ssh -i <path to pem file> ubuntu@<public DNS address>  
+  $ ssh -i <path to pem file> ubuntu@<Public DNS>  
   ```
   
 - Pull the docker image and run the container as follows:
@@ -111,4 +111,4 @@ These packages include:
   ```
   See the default options in the [Local machine](#local-machine) section above.
 
-- Copy the _'Public DNS(IPv4)'_ for the instance, paste it into your browser as follows: `<Public DNS>:8787`. This will take you to the RStudio Server login page. Use the username/password you set (or: rstudio/rstudio) to login and start analysing. If you entered your `git` credentials, perform a `git clone` to get a repo into the container. 
+- Copy the _'Public DNS(IPv4)'_ for the instance, and paste it into your browser as follows: `<Public DNS>:8787`. This will take you to the RStudio Server login page. Use the username/password you set (or: rstudio/rstudio) to login and start analysing. If you entered your `git` credentials, perform a `git clone` to get a repo into the container. 
