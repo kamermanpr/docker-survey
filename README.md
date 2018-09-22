@@ -26,7 +26,7 @@ These packages include:
 - _srvyr_ (a wrapper for _survey_ that gives _dplyr_-like functionality). 
 
 **MRAN Snapshot date:**  
-- v0.1.0 16 September 2018  
+- 16 September 2018  
 
 ## Usage
 
