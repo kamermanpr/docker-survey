@@ -1,6 +1,6 @@
 # docker-survey-R3.5.1
 
-A dockerfile to create an image of an R environment based on R v3.5.1 that I find useful for analysing surveys with complex designs. 
+A dockerfile to create an image of an R environment based on R v3.5.1 that I find useful for analysing surveys with complex designs. The image allows you to configure `git` and specify your preferred RStudio theme from the get-go thanks to some scripts by [Derek Powell](http://www.derekmpowell.com/posts/2018/02/docker-tutorial-3/).
 
 ----
 
@@ -112,3 +112,7 @@ These packages include:
   See the default options in the [Local machine](#local-machine) section above.
 
 - Copy the _'Public DNS(IPv4)'_ for the instance, and paste it into your browser as follows: `<Public DNS>:8787`. This will take you to the RStudio Server login page. Use the username/password you set (or: rstudio/rstudio) to login and start analysing. If you entered your `git` credentials, perform a `git clone` to get a repo into the container. 
+
+### Issues
+
+If something doesn't work or you want to suggest additional packages, please open and [issue](https://github.com/kamermanpr/docker-survey-R3.5.1/issues).
