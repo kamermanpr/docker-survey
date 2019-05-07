@@ -1,6 +1,6 @@
-# docker-survey-R3.5.1
+# docker-survey
 
-A dockerfile to create an image of an R environment based on R v3.5.1 that I find useful for analysing surveys with complex designs. The image allows you to configure `git` and specify your preferred RStudio theme from the get-go thanks to some scripts by [Derek Powell](http://www.derekmpowell.com/posts/2018/02/docker-tutorial-3/).
+A dockerfile to create an image of an R environment based on R v3.6.0 that I find useful for analysing surveys with complex designs.
 
 ----
 
@@ -10,7 +10,7 @@ The image is built using the [_rocker/geospatial_](https://hub.docker.com/r/rock
 
 | Image                                                  	        | Description                            	|
 |:------------------------------------------------------------------|:------------------------------------------|
-| [_rocker/r-ver:3.5.1_](https://hub.docker.com/r/rocker/r-ver)   	| Base R v3.5.1 on Debian:stretch          	|
+| [_rocker/r-ver:3.6.0_](https://hub.docker.com/r/rocker/r-ver)   	| Base R v3.6.0 on Debian:stretch          	|
 | [_rocker/rstudio_](https://hub.docker.com/r/rocker/rstudio)     	| Adds RStudio                           	|
 | [_rocker/tidyverse_](https://hub.docker.com/r/rocker/tidyverse) 	| Adds tidyverse and devtool             	|
 | [_rocker/verse_](https://hub.docker.com/r/rocker/verse)         	| Adds tex & publishing-related packages 	|
@@ -26,7 +26,7 @@ These packages include:
 - _srvyr_ (a wrapper for _survey_ that gives _dplyr_-like functionality). 
 
 **MRAN Snapshot date:**  
-- 16 September 2018  
+- The snapshot at the time of the last docker build.
 
 ## Usage
 
@@ -38,10 +38,10 @@ These packages include:
   
   ```
   # Pull the docker image (you only need to do this once)
-  $ docker pull kamermanpr/docker-survey:v0.1.4
+  $ docker pull kamermanpr/docker-survey:v2.0.0
   
-  # Run the container
-  $ docker run --name rstudio_survey -d -p 8787:8787 -e USER=rstudio -e PASSWORD=rstudio -e ROOT=TRUE -e GIT_USER="your.name" -e GIT_EMAIL="your.email@gmail.com" -e THEME="Cobalt" kamermanpr/docker-survey:v0.1.4
+  # Run the container locally
+  $ docker run --name rstudio_survey -d -p 8787:8787 -e USER=rstudio -e PASSWORD=rstudio -e ROOT=TRUE -e kamermanpr/docker-survey:v2.0.0
   ```
   The default options are:
   
@@ -53,15 +53,9 @@ These packages include:
   
   - `-e ROOT=TRUE`
   
-  - `-e GIT_USER="your.name"`
-  
-  - `-e GIT_EMAIL="your.email@gmail.com"` 
-  
-  - `-e THEME="Cobalt"` (I like a dark theme)
-  
   Change these options to what works for you, or delete an option all together if you don't need it. 
   
-  After the container is up and running, open your browser and enter the following URL: `localhost:8787`, which will take you to the RStudio Server login page. Use the username/password you set (or: rstudio/rstudio) to login and start analysing. If you entered your `git` credentials, perform a `git clone` to get a repo into the container. 
+  After the container is up and running, open your browser and enter the following URL: `localhost:8787`, which will take you to the RStudio Server login page. Use the username/password you set (or: rstudio/rstudio) to login and start analysing. 
 
 ### Cloud
 
@@ -79,14 +73,14 @@ These packages include:
   #cloud-config
 
   runcmd:
-    - docker pull kamermanpr/docker-survey:v0.1.4
-    - docker run --name rstudio_survey -d -p 8787:8787 -e USER=rstudio -e PASSWORD=rstudio -e ROOT=TRUE -e GIT_USER="your.name" -e GIT_EMAIL="your.email@gmail.com" -e THEME="Cobalt" kamermanpr/docker-survey:v0.1.4
+    - docker pull kamermanpr/docker-survey:v2.0.0
+    - docker run --name rstudio_survey -d -p 8787:8787 -e USER=rstudio -e PASSWORD=rstudio -e ROOT=TRUE -e kamermanpr/docker-survey:v0.1.4
   ```
   See the default options in the [Local machine](#local-machine) section above.
   
 - Create the droplet, let it launch, and then wait a minute or two while the docker image is pulled and the container launched.
 
-- Copy the IP address for the droplet you created, and paste it into your browser as follows: `<IP ADDRESS>:8787`. This will take you to the RStudio Server login page. Use the username/password you set (or: rstudio/rstudio) to login and start analysing. If you entered your `git` credentials, perform a `git clone` to get a repo into the container. 
+- Copy the IP address for the droplet you created, and paste it into your browser as follows: `<IP ADDRESS>:8787`. This will take you to the RStudio Server login page. Use the username/password you set (or: rstudio/rstudio) to login and start analysing. 
 
 #### Amazon EC2 instance
 
@@ -104,15 +98,15 @@ These packages include:
 
   ```
   # Pull the docker image (you only need to do this once)
-  $ sudo docker pull kamermanpr/docker-survey:v0.1.4
+  $ sudo docker pull kamermanpr/docker-survey:v2.0.0
   
   # Run the container
-  $ sudo docker run --name rstudio_survey -d -p 8787:8787 -e USER=rstudio -e PASSWORD=rstudio -e ROOT=TRUE -e GIT_USER="your.name" -e GIT_EMAIL="your.email@gmail.com" -e THEME="Cobalt" kamermanpr/docker-survey:v0.1.4
+  $ sudo docker run --name rstudio_survey -d -p 8787:8787 -e USER=rstudio -e PASSWORD=rstudio -e ROOT=TRUE -e kamermanpr/docker-survey:v2.0.0
   ```
   See the default options in the [Local machine](#local-machine) section above.
 
-- Copy the _'Public DNS(IPv4)'_ for the instance, and paste it into your browser as follows: `<Public DNS>:8787`. This will take you to the RStudio Server login page. Use the username/password you set (or: rstudio/rstudio) to login and start analysing. If you entered your `git` credentials, perform a `git clone` to get a repo into the container. 
+- Copy the _'Public DNS(IPv4)'_ for the instance, and paste it into your browser as follows: `<Public DNS>:8787`. This will take you to the RStudio Server login page. Use the username/password you set (or: rstudio/rstudio) to login and start analysing.
 
 ### Issues
 
-If something doesn't work or you want to suggest additional packages, please open and [issue](https://github.com/kamermanpr/docker-survey-R3.5.1/issues).
+If something doesn't work or you want to suggest additional packages, please open and [issue](https://github.com/kamermanpr/docker-survey/issues).
