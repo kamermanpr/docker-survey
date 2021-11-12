@@ -74,7 +74,7 @@ These packages include:
 
   runcmd:
     - docker pull kamermanpr/docker-survey:v2.0.0
-    - docker run --name rstudio_survey -d -p 8787:8787 -e USER=rstudio -e PASSWORD=rstudio -e ROOT=TRUE -e kamermanpr/docker-survey:v0.1.4
+    - docker run --name rstudio_survey -d -p 8787:8787 -e USER=rstudio -e PASSWORD=rstudio -e ROOT=TRUE kamermanpr/docker-survey:v0.1.4
   ```
   See the default options in the [Local machine](#local-machine) section above.
   
